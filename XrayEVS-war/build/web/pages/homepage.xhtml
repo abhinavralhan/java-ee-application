@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/templates/page-layout.xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:define name="content">
+
+        <b:jumbotron>
+            <h1>${msg.startpageHeadline}</h1>
+            <p>${msg.startpageInfoText}</p>
+            <p>
+                <h:link outcome="login" class="btn btn-lg btn-primary" value="${msg.startpageLoginButtonLabel}" rendered="${!loginBean.loggedIn}"/>
+                <h:link outcome="organizerpage" class="btn btn-lg btn-primary" value="${msg.startAsOrganizerButtonLabel}" rendered="${loginBean.loggedIn and loginBean.organizerRole}"/>
+                <span>    </span>
+                <h:link value="${msg.startpageLinkToSubmitVote}" outcome="voting" class="btn btn-lg btn-primary" />
+                <span>    </span>
+                <h:link outcome="adminpage" value="${msg.startpageAdminLoginButtonLabel}" rendered="${!loginBean.loggedIn}" class="btn btn-lg btn-primary"/>
+            </p>
+        </b:jumbotron>
+    </ui:define>
+</ui:composition>
